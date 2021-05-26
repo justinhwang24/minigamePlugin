@@ -1,4 +1,4 @@
-package io.github.projectplugin.main;
+package io.github.minigameplugin.main;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
