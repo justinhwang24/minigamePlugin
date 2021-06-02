@@ -1,5 +1,6 @@
 package io.github.minigameplugin.main;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,5 +13,6 @@ public class JoinEvents implements Listener {
 		Player p = e.getPlayer();
 //		Location spawn = new Location();
 //		p.teleport(spawn);
+		p.sendTitle(ChatColor.AQUA + "insert name", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
 	}
 }
