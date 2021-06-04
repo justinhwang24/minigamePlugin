@@ -16,5 +16,6 @@ public class JoinEvents implements Listener {
 //		p.teleport(spawn);
 		p.sendTitle(ChatColor.AQUA + "insert name", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
 		p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
+		p.setLevel(0);
 	}
 }
