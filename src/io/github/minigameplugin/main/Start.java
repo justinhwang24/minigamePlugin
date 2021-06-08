@@ -25,14 +25,22 @@ public class Start {
 	public static void teleport() {
 		//Teleports players to set locations
 		ArrayList<Location> locations = new ArrayList<Location>();
-		locations.add(world,10,70,10);
-		locations.add(world,13,70,10);
-		locations.add(world,15,70,10);
-		locations.add(world,12,70,10);
+		Player player = player.getPlayer();
+		World world = player.getWorld();
+		Location l = new Location(world,10,70,10);
+		locations.add(l);
+		Location l2 = new Location(world,15,70,10);
+		locations.add(l2);
+		Location l3 = new Location(world,20,70,10);
+		locations.add(l3);
+		Location l4 = new Location(world,25,70,10);
+		locations.add(l4);
+		Location l5 = new Location(world,30,70,10);
+		locations.add(l5);
 		Collection<Player> players = Bukkit.getOnlinePlayers();
 		int i =0;
-		for(Player : players) {
-			players.get(i).teleport(locations.get(i));
+		for(Player p : players) {
+			players.get(p).teleport(locations.get(i));
 			i++;
 		}
 		
