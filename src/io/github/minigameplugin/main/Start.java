@@ -5,9 +5,21 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+<<<<<<< HEAD
 import org.bukkit.entity.Player;
+=======
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.entity.FallingBlock;
+>>>>>>> branch 'master' of https://github.com/justinhwang24/minigamePlugin.git
 
 public class Start {
+	// map boundaries TODO
+	static int x1 = 0;
+	static int x2 = 0;
+	static int z1 = 0;
+	static int z2 = 0;
+	static int y = 0;
 	
 	public static void teleport() {
 		//Teleports players to set locations
@@ -28,8 +40,14 @@ public class Start {
 		//immobilizes players for 5 seconds, and timer goes down from 5 in chat
 	}
 	
-	public static void tntdrop() {
-		//drop tnt
+	public static void tntDrop() {
+		World world = Bukkit.getWorld("world");
+		for (int i = x1; i <= x2; i++) {
+			for (int j = z1; j <= z2; j++) {
+				Location loc = new Location(world, i, y, j);
+				FallingBlock tnt = (FallingBlock) world.spawnFallingBlock(loc, Material.TNT.createBlockData());
+			}
+		}
 	}
 }
 
