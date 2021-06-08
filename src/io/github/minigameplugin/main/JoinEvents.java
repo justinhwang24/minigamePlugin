@@ -25,5 +25,10 @@ public class JoinEvents implements Listener {
 		Location loc = new Location(world,0,70,0);
 		p.teleport(loc);
 		//p.setGameMode();
+		
+		//Add win event
+		//Loops through until 1 person alive, then stops
+		//run returnTP method
 	}
+	
 }

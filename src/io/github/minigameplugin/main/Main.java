@@ -36,7 +36,7 @@ public class Main extends JavaPlugin {
 				if(player.hasPermission("reset.use")) {
 					player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD+"Resetting Minigame!");	
 					//reset minigame
-					//TODO, add method for resetting minigame
+					Reset.returnTp();
 					return true;
 				}
 				player.sendMessage(ChatColor.RED + "You do not have permission to use this command, contact a server mod!");
