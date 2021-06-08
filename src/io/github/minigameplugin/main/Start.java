@@ -13,6 +13,7 @@ public class Start {
 	static int x2 = 0;
 	static int z1 = 0;
 	static int z2 = 0;
+	static int y = 0;
 	
 	public static void teleport() {
 		//tp players to set of locations in arena
@@ -26,7 +27,6 @@ public class Start {
 	
 	public static void tntDrop() {
 		World world = Bukkit.getWorld("world");
-		int y = 100; // TODO
 		for (int i = x1; i <= x2; i++) {
 			for (int j = z1; j <= z2; j++) {
 				Location loc = new Location(world, i, y, j);
