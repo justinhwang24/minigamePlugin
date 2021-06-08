@@ -9,10 +9,10 @@ import org.bukkit.entity.FallingBlock;
 
 public class Start {
 	// map boundaries TODO
-	int x1 = 0;
-	int x2 = 0;
-	int z1 = 0;
-	int z2 = 0;
+	static int x1 = 0;
+	static int x2 = 0;
+	static int z1 = 0;
+	static int z2 = 0;
 	
 	public static void teleport() {
 		//tp players to set of locations in arena
