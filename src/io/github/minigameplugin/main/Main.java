@@ -52,8 +52,10 @@ public class Main extends JavaPlugin {
 			if(sender instanceof Player) {
 				Player player = (Player) sender;
 					player.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD+"Starting Game Soon!");
-					//player.
 					//start game
+					Start.teleport();
+					Start.immobilize();
+					Start.tntdrop();
 					//TODO, add method for starting game
 					return true;
 			}
