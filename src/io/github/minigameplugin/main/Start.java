@@ -2,6 +2,7 @@ package io.github.minigameplugin.main;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -29,15 +30,26 @@ public class Start {
 		locations.add(world,15,70,10);
 		locations.add(world,12,70,10);
 		Collection<Player> players = Bukkit.getOnlinePlayers();
+		int i =0;
 		for(Player : players) {
 			players.get(i).teleport(locations.get(i));
+			i++;
 		}
 		
 	}
-	
-	public static void immobilize() {
-		
-		//immobilizes players for 5 seconds, and timer goes down from 5 in chat
+	public static void countdown() {
+		//5 second countdown until tnt
+		Bukkit.broadcastMessage("Starting in 5...");
+		TimeUnit.SECONDS.sleep(1);
+		Bukkit.broadcastMessage("4...");
+		TimeUnit.SECONDS.sleep(1);
+		Bukkit.broadcastMessage("3...");
+		TimeUnit.SECONDS.sleep(1);
+		Bukkit.broadcastMessage("2...");
+		TimeUnit.SECONDS.sleep(1);
+		Bukkit.broadcastMessage("1...");
+		TimeUnit.SECONDS.sleep(1);
+		Bukkit.broadcastMessage("Start!");
 	}
 	
 	public static void tntDrop() {

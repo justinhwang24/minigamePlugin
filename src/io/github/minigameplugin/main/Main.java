@@ -54,8 +54,8 @@ public class Main extends JavaPlugin {
 					player.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD+"Starting Game Soon!");
 					//start game
 					Start.teleport();
-					Start.immobilize();
-					Start.tntdrop();
+					Start.countdown();
+					Start.tntDrop();
 					//TODO, add method for starting game
 					return true;
 			}
