@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-<<<<<<< HEAD
+
 import org.bukkit.entity.Player;
-=======
+
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.FallingBlock;
->>>>>>> branch 'master' of https://github.com/justinhwang24/minigamePlugin.git
+
 
 public class Start {
 	// map boundaries TODO
