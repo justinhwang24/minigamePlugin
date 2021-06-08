@@ -1,5 +1,6 @@
 package io.github.minigameplugin.main;
 
+<<<<<<< HEAD
 import java.util.List;
 
 public class Start {
@@ -17,5 +18,8 @@ public class Start {
 	public static void tntdrop() {
 		//drop tnt
 	}
+=======
+public class Start {
+>>>>>>> branch 'master' of https://github.com/justinhwang24/minigamePlugin.git
 
 }
