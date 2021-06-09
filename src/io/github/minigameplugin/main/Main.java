@@ -1,5 +1,7 @@
 package io.github.minigameplugin.main;
 
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -26,6 +28,7 @@ public class Main extends JavaPlugin {
 		//plugin reloads
 	}
 	
+	
 	//reset
 	
 
@@ -36,6 +39,7 @@ public class Main extends JavaPlugin {
 				if(player.hasPermission("reset.use")) {
 					player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD+"Resetting Minigame!");	
 					//reset minigame
+					Reset.original();
 					Reset.returnTp();
 					return true;
 				}
@@ -45,6 +49,8 @@ public class Main extends JavaPlugin {
 			else {
 				//reset command for server
 				sender.sendMessage("Resetting minigame");
+				Reset.original();
+				Reset.returnTp();
 				return true;
 			}
 		}
@@ -66,9 +72,13 @@ public class Main extends JavaPlugin {
 			else {
 				//reset command for server
 				sender.sendMessage("Starting Game");
+				Start.teleport();
+				Start.countdown();
+				Start.tntDrop();
 				return true;
 			}
 		}
 		return false;
 	}
+	
 }
