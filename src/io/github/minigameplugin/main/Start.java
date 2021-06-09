@@ -23,7 +23,7 @@ public class Start {
 	public static ArrayList<Player> alive = new ArrayList<Player>();
 	
 	public static void teleport() {
-		// Teleports players to set locations
+		// teleports players to set locations
 		int i = 0;
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			Location l = new Location(p.getWorld(), 10 + i * 5, 70, 10);
