@@ -14,8 +14,7 @@ public class JoinEvents implements Listener {
 	@EventHandler
 	public void onJoin (PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-//		Location spawn = new Location();
-//		p.teleport(spawn);
+		//p.teleport(spawn);
 		p.sendTitle(ChatColor.AQUA + "insert name", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
 		p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
 		p.setLevel(0);
@@ -26,9 +25,12 @@ public class JoinEvents implements Listener {
 		p.teleport(loc);
 		//p.setGameMode();
 		
+		
+		
 		//Add win event
 		//Loops through until 1 person alive, then stops
 		//run returnTP method
 	}
+	
 	
 }

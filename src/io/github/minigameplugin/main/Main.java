@@ -36,6 +36,7 @@ public class Main extends JavaPlugin {
 				if(player.hasPermission("reset.use")) {
 					player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD+"Resetting Minigame!");	
 					//reset minigame
+					Reset.original();
 					Reset.returnTp();
 					return true;
 				}
