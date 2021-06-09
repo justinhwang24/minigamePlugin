@@ -37,15 +37,14 @@ public class Start {
 		locations.add(l4);
 		Location l5 = new Location(world,30,70,10);
 		locations.add(l5);
-		Collection<Player> players = Bukkit.getOnlinePlayers();
-		int i =0;
-		for(Player p : players) {
-			players.get(p).teleport(locations.get(i));
+		int i = 0;
+		for(Player p : Bukkit.getOnlinePlayers()) {
+			p.teleport(locations.get(i));
 			i++;
 		}
 		
 	}
-	public static void countdown() {
+	public static void countdown() throws InterruptedException {
 		//5 second countdown until tnt
 		Bukkit.broadcastMessage("Starting in 5...");
 		TimeUnit.SECONDS.sleep(1);
