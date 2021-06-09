@@ -25,7 +25,7 @@ public class Start {
 	public static void teleport() {
 		// Teleports players to set locations
 		int i = 0;
-		for(Player p : Bukkit.getOnlinePlayers()) {
+		for (Player p : Bukkit.getOnlinePlayers()) {
 			Location l = new Location(p.getWorld(), 10 + i * 5, 70, 10);
 			p.teleport(l);
 			i++;
