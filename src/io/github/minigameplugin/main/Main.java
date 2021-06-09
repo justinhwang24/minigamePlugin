@@ -1,18 +1,19 @@
 package io.github.minigameplugin.main;
 
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
+	public static Plugin instance;
 	
 	@Override
 	public void onEnable() {
+		instance = this;
 		//startup
 		//reloads
 		//plugin reloads
@@ -73,7 +74,12 @@ public class Main extends JavaPlugin {
 				//reset command for server
 				sender.sendMessage("Starting Game");
 				Start.teleport();
-				Start.countdown();
+				try {
+					Start.countdown();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				Start.tntDrop();
 				return true;
 			}

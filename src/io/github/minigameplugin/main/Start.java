@@ -19,25 +19,15 @@ public class Start {
 	static int z1 = 0;
 	static int z2 = 0;
 	static int y = 0;
+	// list of alive players
+	public static ArrayList<Player> alive = new ArrayList<Player>();
 	
 	public static void teleport() {
-		//Teleports players to set locations
-		ArrayList<Location> locations = new ArrayList<Location>();
-		Player player = player.getPlayer();
-		World world = player.getWorld();
-		Location l = new Location(world,10,70,10);
-		locations.add(l);
-		Location l2 = new Location(world,15,70,10);
-		locations.add(l2);
-		Location l3 = new Location(world,20,70,10);
-		locations.add(l3);
-		Location l4 = new Location(world,25,70,10);
-		locations.add(l4);
-		Location l5 = new Location(world,30,70,10);
-		locations.add(l5);
+		// Teleports players to set locations
 		int i = 0;
 		for(Player p : Bukkit.getOnlinePlayers()) {
-			p.teleport(locations.get(i));
+			Location l = new Location(p.getWorld(), 10 + i * 5, 70, 10);
+			p.teleport(l);
 			i++;
 		}
 		
@@ -55,6 +45,7 @@ public class Start {
 		Bukkit.broadcastMessage("1...");
 		TimeUnit.SECONDS.sleep(1);
 		Bukkit.broadcastMessage("Start!");
+		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
 	}
 	
 	public static void tntDrop() {

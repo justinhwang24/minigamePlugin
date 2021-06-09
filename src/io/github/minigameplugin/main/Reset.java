@@ -9,16 +9,14 @@ import org.bukkit.entity.Player;
 
 public class Reset {
 	
-	public static void original() {
+	public static void original(Player player) {
 		//reset player hp, removes blocks, etc.
-		Player player = player.getPlayer();
 		player.setHealth(20);
 	}
 	
-	public static void returnTp() {
+	public static void returnTp(Player player) {
 		//returns players back to glass platform
 		ArrayList<Location> locations = new ArrayList<Location>();
-		Player player = player.getPlayer();
 		World world = player.getWorld();
 		Location l = new Location(world,10,100,10);
 		locations.add(l);
