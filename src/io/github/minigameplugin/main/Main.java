@@ -20,6 +20,8 @@ public class Main extends JavaPlugin {
 		//register events
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new JoinEvents(), this);
+		pm.registerEvents(new Death(), this);
+		pm.registerEvents(new Queue(), this);
 	}
 	
 	@Override
