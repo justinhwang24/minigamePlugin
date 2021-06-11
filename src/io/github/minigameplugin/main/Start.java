@@ -11,7 +11,6 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.FallingBlock;
 
-
 public class Start {
 	// map boundaries TODO
 	static int x1 = 0;

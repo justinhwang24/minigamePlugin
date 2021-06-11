@@ -14,10 +14,14 @@ public class Reset {
 		player.setHealth(20);
 	}
 	
-	public static void returnTp(Player player) {
+	public static void returnTp() {
 		//returns players back to glass platform
 		ArrayList<Location> locations = new ArrayList<Location>();
-		World world = player.getWorld();
+		World world = null;
+		for(Player p : Bukkit.getOnlinePlayers()) {
+			world = p.getWorld();
+			break;
+		}
 		Location l = new Location(world,10,100,10);
 		locations.add(l);
 		Location l2 = new Location(world,15,100,10);
