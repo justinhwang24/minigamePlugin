@@ -22,6 +22,7 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new JoinEvents(), this);
 		pm.registerEvents(new Death(), this);
 		pm.registerEvents(new Queue(), this);
+		pm.registerEvents(new Explosion(), this);
 	}
 	
 	@Override
@@ -31,10 +32,7 @@ public class Main extends JavaPlugin {
 		//plugin reloads
 	}
 	
-	
 	//reset
-	
-
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(label.equalsIgnoreCase("reset")) {
 			if(sender instanceof Player) {
