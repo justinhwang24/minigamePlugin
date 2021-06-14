@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
 public class Queue implements Listener {
-	ArrayList<Player> list = new ArrayList<Player>();
+	static ArrayList<Player> list = new ArrayList<Player>();
 	//If enough players in queue, run start commands
 	
 	public void glassCage(Player p) {
