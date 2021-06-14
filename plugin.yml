@@ -1,6 +1,6 @@
 name: MinigamePlugin
 version: 1.0
-main: io.github.minigameplugin.Main
+main: io.github.minigameplugin.main.Main
 description: Minigames
 api-version: 1.16
 
