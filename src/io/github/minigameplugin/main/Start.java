@@ -7,6 +7,9 @@ import org.bukkit.Location;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import net.md_5.bungee.api.ChatColor;
+
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.FallingBlock;
@@ -34,17 +37,17 @@ public class Start {
 	}
 	public static void countdown() throws InterruptedException {
 		//5 second countdown until tnt
-		Bukkit.broadcastMessage("Starting in 5...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "Starting in 5...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("4...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "4...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("3...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "3...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("2...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "2...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("1...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "1...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("Start!");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "Start!");
 		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
 		started = true;
 		tntDrop();
@@ -55,6 +58,9 @@ public class Start {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
+				if (!started)
+					cancel();
+				
 				World world = Bukkit.getWorld("world");
 				int randomX = (int) Math.random() * (x2 - x1) + x1;
 				int randomZ = (int) Math.random() * (z2 - z1) + z1;
