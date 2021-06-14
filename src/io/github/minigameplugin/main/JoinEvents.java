@@ -1,6 +1,7 @@
 package io.github.minigameplugin.main;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
@@ -26,7 +27,9 @@ public class JoinEvents implements Listener {
 		p.teleport(loc);
 		
 		if (Start.started && !Queue.list.contains(p))
-			p.kickPlayer("Player Limit Reached!");
+			p.setGameMode(GameMode.SPECTATOR);
+		else
+			p.setGameMode(GameMode.ADVENTURE);
 		//Add win event
 		//Loops through until 1 person alive, then stops
 		//run returnTP method
