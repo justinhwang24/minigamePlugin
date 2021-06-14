@@ -22,8 +22,12 @@ public class JoinEvents implements Listener {
 		
 		World world = p.getWorld();
 		
+<<<<<<< HEAD
+		Location loc = new Location(world,0,107,1);
+=======
 		Queue.glassCage(p);
 		Location loc = new Location(world,0,107,0);
+>>>>>>> branch 'master' of https://github.com/justinhwang24/minigamePlugin.git
 		p.teleport(loc);
 		
 		if (Start.started && !Queue.list.contains(p))

@@ -15,11 +15,11 @@ import org.bukkit.entity.FallingBlock;
 
 public class Start {
 	// map boundaries TODO
-	static int x1 = 0;
-	static int x2 = 0;
-	static int z1 = 0;
-	static int z2 = 0;
-	static int y = 0;
+	static int x1 = 47;
+	static int x2 = -50;
+	static int z1 = 51;
+	static int z2 = -48;
+	static int y = 30;
 	// list of alive players
 	static boolean started = false;
 	public static ArrayList<Player> alive = new ArrayList<Player>();
