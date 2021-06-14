@@ -15,7 +15,6 @@ public class JoinEvents implements Listener {
 	public void onJoin (PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		
-		//p.teleport(spawn);
 		p.sendTitle(ChatColor.AQUA + "insert name", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
 		p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
 		p.setLevel(0);
@@ -26,10 +25,8 @@ public class JoinEvents implements Listener {
 		Location loc = new Location(world,0,107,0);
 		p.teleport(loc);
 		
-		if (Queue.list.contains(p))
-		p.kickPlayer("Player Limit Reached!");
-		//p.setGameMode();
-		
+		if (Start.started && !Queue.list.contains(p))
+			p.kickPlayer("Player Limit Reached!");
 		//Add win event
 		//Loops through until 1 person alive, then stops
 		//run returnTP method

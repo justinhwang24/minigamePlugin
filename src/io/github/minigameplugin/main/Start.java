@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 import org.bukkit.entity.Player;
-
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.FallingBlock;
@@ -47,16 +47,22 @@ public class Start {
 		Bukkit.broadcastMessage("Start!");
 		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
 		started = true;
+		tntDrop();
 	}
 	
 	public static void tntDrop() {
-		World world = Bukkit.getWorld("world");
-		for (int i = x1; i <= x2; i++) {
-			for (int j = z1; j <= z2; j++) {
-				Location loc = new Location(world, i, y, j);
+		
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				World world = Bukkit.getWorld("world");
+				int randomX = (int) Math.random() * (x2 - x1) + x1;
+				int randomZ = (int) Math.random() * (z2 - z1) + z1;
+				
+				Location loc = new Location(world, randomX, y, randomZ);
 				FallingBlock tnt = (FallingBlock) world.spawnFallingBlock(loc, Material.TNT.createBlockData());
 			}
-		}
+		}.runTaskTimer(Main.instance, 0L, 50L);
 	}
 }
 
