@@ -17,17 +17,24 @@ public class JoinEvents implements Listener {
 		Player p = e.getPlayer();
 		
 		p.sendTitle(ChatColor.AQUA + "insert name", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
-		p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
+		p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
 		p.setLevel(0);
 		
 		World world = p.getWorld();
 		
+<<<<<<< HEAD
 
 		Location loc = new Location(world,0,107,1);
 
+=======
+>>>>>>> branch 'master' of https://github.com/justinhwang24/minigamePlugin.git
 		Queue.glassCage(p);
+<<<<<<< HEAD
 		//Location loc = new Location(world,0,107,0);
 
+=======
+		Location loc = new Location(world,0,107,0);
+>>>>>>> branch 'master' of https://github.com/justinhwang24/minigamePlugin.git
 		p.teleport(loc);
 		
 		if (Start.started && !Queue.list.contains(p))
