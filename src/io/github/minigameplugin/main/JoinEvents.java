@@ -1,6 +1,7 @@
 package io.github.minigameplugin.main;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -22,8 +23,11 @@ public class JoinEvents implements Listener {
 		World world = p.getWorld();
 		
 		Queue.glassCage(p);
-//		Location loc = new Location(world,0,70,0);
-//		p.teleport(loc);
+		Location loc = new Location(world,0,107,0);
+		p.teleport(loc);
+		
+		if (Queue.list.contains(p))
+		p.kickPlayer("Player Limit Reached!");
 		//p.setGameMode();
 		
 		//Add win event
