@@ -11,7 +11,7 @@ public class Queue implements Listener {
 	//If enough players in queue, run start commands
 	
 	public static void glassCage(Player p) {
-		Location loc = new Location(p.getWorld(), 0, 70, 0); // TODO; insert coords to glass cage
+		Location loc = new Location(p.getWorld(), 0, 107, 0); // TODO; insert coords to glass cage
 		list.add(p);
 		p.teleport(loc);
 	}

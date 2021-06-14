@@ -12,7 +12,7 @@ public class SpawnCreatures {
 	public void spawnCreatures() {
 		World world = null; // TODO
 		// fix coords
-		Entity en = world.spawnEntity(new Location(world, 0.5, 65, 0.5, 0, 0), EntityType.VILLAGER);
+		Entity en = world.spawnEntity(new Location(world, 1, 107, 1, 0, 0), EntityType.VILLAGER);
 	    Villager v = (Villager) en;
 	    v.setSilent(true);
 	    v.setAI(false);
