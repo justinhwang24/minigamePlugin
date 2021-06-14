@@ -19,6 +19,7 @@ public class Start {
 	static int z2 = 0;
 	static int y = 0;
 	// list of alive players
+	static boolean started = false;
 	public static ArrayList<Player> alive = new ArrayList<Player>();
 	
 	public static void teleport() {
@@ -45,6 +46,7 @@ public class Start {
 		TimeUnit.SECONDS.sleep(1);
 		Bukkit.broadcastMessage("Start!");
 		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
+		started = true;
 	}
 	
 	public static void tntDrop() {
