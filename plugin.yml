@@ -3,3 +3,11 @@ version: 1.0
 main: io.github.minigameplugin.Main
 description: Minigames
 api-version: 1.16
+
+commands:
+
+    reset:
+        usage: /reset
+        
+    start:
+        usage: /start

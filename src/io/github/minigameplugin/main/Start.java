@@ -3,9 +3,11 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -19,6 +21,7 @@ public class Start {
 	static int z2 = 0;
 	static int y = 0;
 	// list of alive players
+	static boolean started = false;
 	public static ArrayList<Player> alive = new ArrayList<Player>();
 	
 	public static void teleport() {
@@ -33,28 +36,38 @@ public class Start {
 	}
 	public static void countdown() throws InterruptedException {
 		//5 second countdown until tnt
-		Bukkit.broadcastMessage("Starting in 5...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "Starting in 5...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("4...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "4...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("3...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "3...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("2...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "2...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("1...");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "1...");
 		TimeUnit.SECONDS.sleep(1);
-		Bukkit.broadcastMessage("Start!");
+		Bukkit.broadcastMessage(ChatColor.GREEN + "Start!");
 		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
+		started = true;
+		tntDrop();
 	}
 	
 	public static void tntDrop() {
-		World world = Bukkit.getWorld("world");
-		for (int i = x1; i <= x2; i++) {
-			for (int j = z1; j <= z2; j++) {
-				Location loc = new Location(world, i, y, j);
+		
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				if (!started)
+					cancel();
+				
+				World world = Bukkit.getWorld("world");
+				int randomX = (int) Math.random() * (x2 - x1) + x1;
+				int randomZ = (int) Math.random() * (z2 - z1) + z1;
+				
+				Location loc = new Location(world, randomX, y, randomZ);
 				FallingBlock tnt = (FallingBlock) world.spawnFallingBlock(loc, Material.TNT.createBlockData());
 			}
-		}
+		}.runTaskTimer(Main.instance, 0L, 50L);
 	}
 }
 
