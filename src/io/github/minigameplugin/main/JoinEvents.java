@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class JoinEvents implements Listener {
@@ -31,5 +32,10 @@ public class JoinEvents implements Listener {
 		//Add win event
 		//Loops through until 1 person alive, then stops
 		//run returnTP method
+	}
+	
+	@EventHandler
+	public void onHunger(FoodLevelChangeEvent e) {
+		e.setCancelled(true);
 	}
 }
