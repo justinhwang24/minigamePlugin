@@ -72,7 +72,6 @@ public class Main extends JavaPlugin {
 			else {
 				//reset command for server
 				sender.sendMessage("Starting Game");
-				Start.teleport();
 				try {
 					Start.countdown();
 				} catch (InterruptedException e) {
