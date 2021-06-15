@@ -8,11 +8,11 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 //Disables tnt environmental damage, but still damages players
 public class Explosion implements Listener {
 	
-	@EventHandler
-	public void onEntityExplodeEvent(final EntityExplodeEvent e) {
-		e.blockList().clear();
-        e.setCancelled(true);
-	}
+//	@EventHandler
+//	public void onEntityExplodeEvent(final EntityExplodeEvent e) {
+//		e.blockList().clear();
+//        e.setCancelled(true);
+//	}
 	
 	@EventHandler
 	public void onBlockExplodeEvent(final BlockExplodeEvent e) {

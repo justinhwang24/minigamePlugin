@@ -15,7 +15,7 @@ public class JoinEvents implements Listener {
 	public void onJoin (PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		
-		p.sendTitle(ChatColor.AQUA + "insert name", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
+		p.sendTitle(ChatColor.BOLD + "" + ChatColor.RED + "TNT Run", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
 		p.setHealth(20);
 		p.setLevel(0);
 		
