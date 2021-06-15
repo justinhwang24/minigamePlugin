@@ -36,7 +36,7 @@ public class Start {
 		// teleports players to set locations
 		int i = 0;
 		for (Player p : Bukkit.getOnlinePlayers()) {
-			Location l = new Location(p.getWorld(), 10 + i * 5, 10, 10);
+			Location l = new Location(p.getWorld(), 10, 10, 10);
 			p.teleport(l);
 			i++;
 		}
@@ -74,7 +74,7 @@ public class Start {
 				Location loc = new Location(world, randomX, y, randomZ);
 				world.spawnEntity(loc, EntityType.PRIMED_TNT);
 			}
-		}.runTaskTimer(Main.instance, 0L, 1L);
+		}.runTaskTimer(Main.instance, 0L, 10L);
 	}
 }
 
