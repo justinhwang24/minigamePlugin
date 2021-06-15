@@ -61,7 +61,6 @@ public class Main extends JavaPlugin {
 				Player player = (Player) sender;
 					player.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Starting Game Soon!");
 					//start game
-					Start.teleport();
 					try {
 						Start.countdown();
 					} catch (InterruptedException e) {

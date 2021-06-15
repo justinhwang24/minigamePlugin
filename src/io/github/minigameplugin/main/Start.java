@@ -28,7 +28,10 @@ public class Start {
 		started = true;
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			alive.add(p);
-			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 10);		
+			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 10);
+		}
+
+		for (Player p : Bukkit.getOnlinePlayers()) {
 			GameScoreboard.updateScoreboard(p);
 		}
 		teleport();
@@ -37,13 +40,10 @@ public class Start {
 	
 	public static void teleport() {
 		// teleports players to set locations
-		int i = 0;
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			Location l = new Location(p.getWorld(), 10, 10, 10);
 			p.teleport(l);
-			i++;
 		}
-		
 	}
 	
 	public static void countdown() throws InterruptedException {

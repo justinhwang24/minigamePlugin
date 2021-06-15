@@ -11,9 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import test.GameScoreboard;
-import test.Start;
-
 public class Death implements Listener {
 	// list of alive players
 	
