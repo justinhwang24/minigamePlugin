@@ -19,4 +19,10 @@ public class Explosion implements Listener {
 		e.blockList().clear();
         e.setCancelled(true);
 	}
+	
+	@EventHandler
+	public void onEntityExplodeEvent(final EntityExplodeEvent e) {
+		e.blockList().clear();
+        e.setCancelled(true);
+	}
 }
