@@ -9,11 +9,6 @@ import org.bukkit.entity.Player;
 
 public class Reset {
 	
-	public static void original(Player player) {
-		//reset player hp, removes blocks, etc.
-		player.setHealth(20);
-	}
-	
 	public static void returnTp() {
 		//returns players back to glass platform
 		ArrayList<Location> locations = new ArrayList<Location>();
@@ -27,6 +22,7 @@ public class Reset {
 
 		int i = 0;
 		for(Player p : Bukkit.getOnlinePlayers()) {
+			p.setHealth(20);
 			p.teleport(locations.get(i));
 			i++;
 		}

@@ -24,6 +24,7 @@ public class Start {
 	public static ArrayList<Player> alive = new ArrayList<Player>();
 	
 	public static void start() {
+		alive.clear();
 		started = true;
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			alive.add(p);
@@ -76,16 +77,17 @@ public class Start {
 				Location loc = new Location(world, randomX, y, randomZ);
 				world.spawnEntity(loc, EntityType.PRIMED_TNT);
 			}
-		}.runTaskTimer(Main.instance, 0L, 6L);
+		}.runTaskTimer(Main.instance, 0L, 5L);
 	}
 	
 	public static void checkForWin() throws InterruptedException {
     	if (alive.size() == 1) {
 	    	// Prints name of last player alive
     		for (Player p : Bukkit.getOnlinePlayers()) {
+    			p.sendTitle(ChatColor.YELLOW + Start.alive.get(0).getName(), ChatColor.YELLOW + "won the game", 20, 50, 20);
     			p.sendMessage(ChatColor.AQUA + Start.alive.get(0).getName() + " won the game!");
     			p.setGameMode(GameMode.ADVENTURE);
-		    	Reset.original(p);
+    			p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10, 1);
     		}
 	    	Start.started = false;
 			TimeUnit.SECONDS.sleep(1);

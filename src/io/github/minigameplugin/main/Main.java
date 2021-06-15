@@ -41,7 +41,6 @@ public class Main extends JavaPlugin {
 				if(player.hasPermission("reset.use")) {
 					player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Resetting Minigame!");	
 					//reset minigame
-					Reset.original(player);
 					Reset.returnTp();
 					return true;
 				}
@@ -68,8 +67,6 @@ public class Main extends JavaPlugin {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					Start.start();
-					//TODO, add method for starting game
 					return true;
 			}
 			else {
@@ -79,10 +76,8 @@ public class Main extends JavaPlugin {
 				try {
 					Start.countdown();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				Start.start();
 				return true;
 			}
 		}
