@@ -1,5 +1,6 @@
 package io.github.minigameplugin.main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -24,6 +25,10 @@ public class JoinEvents implements Listener {
 		Location loc = new Location(world, 0, 107, 0);
 		Queue.glassCage(p);
 		p.teleport(loc);
+		
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			GameScoreboard.updateScoreboard(player);
+		}
 		
 		if (Start.started && !Queue.list.contains(p))
 			p.setGameMode(GameMode.SPECTATOR);

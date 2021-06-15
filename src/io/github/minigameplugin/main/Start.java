@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -23,11 +24,12 @@ public class Start {
 	public static ArrayList<Player> alive = new ArrayList<Player>();
 	
 	public static void start() {
+		started = true;
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			alive.add(p);
 			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 10);		
+			GameScoreboard.updateScoreboard(p);
 		}
-		started = true;
 		teleport();
 		tntDrop();
 	}
@@ -74,7 +76,21 @@ public class Start {
 				Location loc = new Location(world, randomX, y, randomZ);
 				world.spawnEntity(loc, EntityType.PRIMED_TNT);
 			}
-		}.runTaskTimer(Main.instance, 0L, 10L);
+		}.runTaskTimer(Main.instance, 0L, 6L);
 	}
+	
+	public static void checkForWin() throws InterruptedException {
+    	if (alive.size() == 1) {
+	    	// Prints name of last player alive
+    		for (Player p : Bukkit.getOnlinePlayers()) {
+    			p.sendMessage(ChatColor.AQUA + Start.alive.get(0).getName() + " won the game!");
+    			p.setGameMode(GameMode.ADVENTURE);
+		    	Reset.original(p);
+    		}
+	    	Start.started = false;
+			TimeUnit.SECONDS.sleep(1);
+	    	Reset.returnTp();
+		}
+    }
 }
 

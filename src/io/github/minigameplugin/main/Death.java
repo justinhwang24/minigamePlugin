@@ -1,5 +1,6 @@
 package io.github.minigameplugin.main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -22,9 +23,12 @@ public class Death implements Listener {
 	            	p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_DEATH, 10, 1);
 	            	Start.alive.remove(p);
 	            	p.setGameMode(GameMode.SPECTATOR);
-	            	p.sendMessage(ChatColor.RED + "You have been hit by TNT!");
+	            	for (Player player : Bukkit.getOnlinePlayers()) {
+	        			GameScoreboard.updateScoreboard(player);
+	            		player.sendMessage(ChatColor.YELLOW + p.getName() + ChatColor.RED + " has been hit by TNT!");
+	            	}
 	            	p.teleport(new Location(p.getWorld(), 10, 50, 10));
-	            	Win.checkForWin();
+	            	Start.checkForWin();
 	            }
             }
         }
@@ -32,6 +36,10 @@ public class Death implements Listener {
 	
 	@EventHandler
 	public void onLeaveEvent(PlayerQuitEvent e) throws InterruptedException {
-		Win.checkForWin();
+		Player p = e.getPlayer();
+		Start.alive.remove(p);
+		Start.checkForWin();	
+		for (Player player : Bukkit.getOnlinePlayers())
+			GameScoreboard.updateScoreboard(player);
 	}
 }

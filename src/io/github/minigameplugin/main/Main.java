@@ -68,7 +68,7 @@ public class Main extends JavaPlugin {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					Start.tntDrop();
+					Start.start();
 					//TODO, add method for starting game
 					return true;
 			}
@@ -82,7 +82,7 @@ public class Main extends JavaPlugin {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				Start.tntDrop();
+				Start.start();
 				return true;
 			}
 		}
