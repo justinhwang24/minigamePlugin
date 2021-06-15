@@ -13,6 +13,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FallingBlock;
 
 public class Start {
@@ -72,11 +73,11 @@ public class Start {
 					cancel();
 				
 				World world = Bukkit.getWorld("world");
-				int randomX = (int) Math.random() * (x2 - x1) + x1;
-				int randomZ = (int) Math.random() * (z2 - z1) + z1;
+				int randomX = (int) (Math.random() * (x2 - x1)) + x1;
+				int randomZ = (int) (Math.random() * (z2 - z1)) + z1;
 				
 				Location loc = new Location(world, randomX, y, randomZ);
-				Bukkit.getWorld("world").spawn(loc, TNTPrimed.class);
+				world.spawnEntity(loc, EntityType.PRIMED_TNT);
 			}
 		}.runTaskTimer(Main.instance, 0L, 50L);
 	}
