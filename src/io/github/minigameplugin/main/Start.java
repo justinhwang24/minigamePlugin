@@ -5,16 +5,11 @@ import java.util.concurrent.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class Start {
 	// map boundaries
@@ -29,9 +24,9 @@ public class Start {
 	
 	public static void start() {
 		for (Player p : Bukkit.getOnlinePlayers()) {
+			alive.add(p);
 			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 10);		
 		}
-		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
 		started = true;
 		teleport();
 		tntDrop();
