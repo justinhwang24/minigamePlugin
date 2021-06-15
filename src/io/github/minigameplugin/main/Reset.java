@@ -1,7 +1,5 @@
 package io.github.minigameplugin.main;
 
-import java.util.ArrayList;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -11,21 +9,12 @@ public class Reset {
 	
 	public static void returnTp() {
 		//returns players back to glass platform
-		ArrayList<Location> locations = new ArrayList<Location>();
-		World world = null;
-		for(Player p : Bukkit.getOnlinePlayers()) {
-			world = p.getWorld();
-			break;
-		}
+		World world = Bukkit.getWorld("world");
 		Location l = new Location(world,0,107,0);
-		locations.add(l);
 
-		int i = 0;
 		for(Player p : Bukkit.getOnlinePlayers()) {
 			p.setHealth(20);
-			p.teleport(locations.get(i));
-			i++;
+			p.teleport(l);
 		}
 	}
-	
 }

@@ -18,7 +18,7 @@ public class Queue implements Listener {
 	
 	public void checkIfEnoughPlayers() throws InterruptedException {
 		if (list.size() >= 3) { // minimum player limit
-			Start.start();
+			Start.countdown();
 		}
 	}
 }

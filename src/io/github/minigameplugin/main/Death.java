@@ -11,6 +11,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import test.GameScoreboard;
+import test.Start;
+
 public class Death implements Listener {
 	// list of alive players
 	
@@ -20,6 +23,7 @@ public class Death implements Listener {
             Player p = (Player) e.getEntity();
             if (Start.alive.contains(p)) {
 	            if (e.getDamage() >= p.getHealth()) {
+	            	e.setCancelled(true);
 	            	p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_DEATH, 10, 1);
 	            	Start.alive.remove(p);
 	            	p.setGameMode(GameMode.SPECTATOR);
@@ -38,7 +42,8 @@ public class Death implements Listener {
 	public void onLeaveEvent(PlayerQuitEvent e) throws InterruptedException {
 		Player p = e.getPlayer();
 		Start.alive.remove(p);
-		Start.checkForWin();	
+		if (Start.started)
+			Start.checkForWin();	
 		for (Player player : Bukkit.getOnlinePlayers())
 			GameScoreboard.updateScoreboard(player);
 	}
