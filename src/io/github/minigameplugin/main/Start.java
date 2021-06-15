@@ -77,7 +77,7 @@ public class Start {
 				Location loc = new Location(world, randomX, y, randomZ);
 				world.spawnEntity(loc, EntityType.PRIMED_TNT);
 			}
-		}.runTaskTimer(Main.instance, 0L, 5L);
+		}.runTaskTimer(Main.instance, 0L, 3L);
 	}
 	
 	public static void checkForWin() throws InterruptedException {
