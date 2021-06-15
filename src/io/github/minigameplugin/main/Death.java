@@ -12,7 +12,7 @@ public class Death implements Listener {
 	// list of alive players
 	
 	@EventHandler
-	public void onDamage(EntityDamageEvent e) {
+	public void onDamage(EntityDamageEvent e) throws InterruptedException {
 		if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
             if (Start.alive.contains(p)) {

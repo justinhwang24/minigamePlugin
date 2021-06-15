@@ -17,7 +17,7 @@ public class Start {
 	static int x2 = -50;
 	static int z1 = 51;
 	static int z2 = -48;
-	static int y = 30;
+	static int y = 50;
 	static boolean started = false;
 	// list of alive players
 	public static ArrayList<Player> alive = new ArrayList<Player>();
@@ -36,7 +36,7 @@ public class Start {
 		// teleports players to set locations
 		int i = 0;
 		for (Player p : Bukkit.getOnlinePlayers()) {
-			Location l = new Location(p.getWorld(), 10 + i * 5, 70, 10);
+			Location l = new Location(p.getWorld(), 10 + i * 5, 10, 10);
 			p.teleport(l);
 			i++;
 		}
