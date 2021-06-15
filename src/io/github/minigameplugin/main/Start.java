@@ -7,22 +7,34 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.FallingBlock;
 
 public class Start {
-	// map boundaries TODO
+	// map boundaries
 	static int x1 = 47;
 	static int x2 = -50;
 	static int z1 = 51;
 	static int z2 = -48;
 	static int y = 30;
-	// list of alive players
 	static boolean started = false;
+	// list of alive players
 	public static ArrayList<Player> alive = new ArrayList<Player>();
+	
+	public static void start() {
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 10);		
+		}
+		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
+		started = true;
+		teleport();
+		tntDrop();
+	}
 	
 	public static void teleport() {
 		// teleports players to set locations
@@ -34,6 +46,7 @@ public class Start {
 		}
 		
 	}
+	
 	public static void countdown() throws InterruptedException {
 		//5 second countdown until tnt
 		Bukkit.broadcastMessage(ChatColor.GREEN + "Starting in 5...");
@@ -47,9 +60,7 @@ public class Start {
 		Bukkit.broadcastMessage(ChatColor.GREEN + "1...");
 		TimeUnit.SECONDS.sleep(1);
 		Bukkit.broadcastMessage(ChatColor.GREEN + "Start!");
-		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
-		started = true;
-		tntDrop();
+		start();
 	}
 	
 	public static void tntDrop() {
@@ -65,7 +76,7 @@ public class Start {
 				int randomZ = (int) Math.random() * (z2 - z1) + z1;
 				
 				Location loc = new Location(world, randomX, y, randomZ);
-				FallingBlock tnt = (FallingBlock) world.spawnFallingBlock(loc, Material.TNT.createBlockData());
+				Bukkit.getWorld("world").spawn(loc, TNTPrimed.class);
 			}
 		}.runTaskTimer(Main.instance, 0L, 50L);
 	}
