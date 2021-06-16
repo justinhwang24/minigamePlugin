@@ -1,13 +1,14 @@
 package io.github.minigameplugin.main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class JoinEvents implements Listener {
@@ -16,16 +17,21 @@ public class JoinEvents implements Listener {
 	public void onJoin (PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		
-		p.sendTitle(ChatColor.AQUA + "insert name", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
-		p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+		p.sendTitle(ChatColor.BOLD + "" + ChatColor.RED + "TNT Run", ChatColor.YELLOW + "Welcome!", 20, 50, 20);
+		p.setHealth(20);
 		p.setLevel(0);
 		
+		//spawns in glass cage and coordinates are given
 		World world = p.getWorld();
-		
+		Location loc = new Location(world, 0, 107, 0);
 		Queue.glassCage(p);
-		Location loc = new Location(world,0,107,0);
 		p.teleport(loc);
 		
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			GameScoreboard.updateScoreboard(player);
+		}
+		
+		//sets gamemode for player as either spectator or actual player
 		if (Start.started && !Queue.list.contains(p))
 			p.setGameMode(GameMode.SPECTATOR);
 		else
@@ -33,5 +39,10 @@ public class JoinEvents implements Listener {
 		//Add win event
 		//Loops through until 1 person alive, then stops
 		//run returnTP method
+	}
+	
+	@EventHandler
+	public void onHunger(FoodLevelChangeEvent e) {
+		e.setCancelled(true);
 	}
 }

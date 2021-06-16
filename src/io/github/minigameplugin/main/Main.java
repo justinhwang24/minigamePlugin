@@ -33,6 +33,7 @@ public class Main extends JavaPlugin {
 	}
 	
 	//reset
+
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(label.equalsIgnoreCase("reset")) {
 			if(sender instanceof Player) {
@@ -40,7 +41,6 @@ public class Main extends JavaPlugin {
 				if(player.hasPermission("reset.use")) {
 					player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Resetting Minigame!");	
 					//reset minigame
-					Reset.original(player);
 					Reset.returnTp();
 					return true;
 				}
@@ -61,27 +61,21 @@ public class Main extends JavaPlugin {
 				Player player = (Player) sender;
 					player.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Starting Game Soon!");
 					//start game
-					Start.teleport();
 					try {
 						Start.countdown();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					Start.tntDrop();
-					//TODO, add method for starting game
 					return true;
 			}
 			else {
 				//reset command for server
 				sender.sendMessage("Starting Game");
-				Start.teleport();
 				try {
 					Start.countdown();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				Start.tntDrop();
 				return true;
 			}
 		}

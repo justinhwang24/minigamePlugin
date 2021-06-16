@@ -11,16 +11,14 @@ public class Queue implements Listener {
 	//If enough players in queue, run start commands
 	
 	public static void glassCage(Player p) {
-		Location loc = new Location(p.getWorld(), 0, 70, 0); // TODO; insert coords to glass cage
+		Location loc = new Location(p.getWorld(), 0, 107, 0);
 		list.add(p);
 		p.teleport(loc);
 	}
 	
 	public void checkIfEnoughPlayers() throws InterruptedException {
 		if (list.size() >= 3) { // minimum player limit
-			Start.teleport();
 			Start.countdown();
-			Start.tntDrop();
 		}
 	}
 }

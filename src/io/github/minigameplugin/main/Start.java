@@ -4,36 +4,48 @@ import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
-
+import org.bukkit.Sound;
+import org.bukkit.World;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.entity.FallingBlock;
-
 public class Start {
-	// map boundaries TODO
+	// map boundaries
 	static int x1 = 47;
 	static int x2 = -50;
 	static int z1 = 51;
 	static int z2 = -48;
-	static int y = 30;
-	// list of alive players
+	static int y = 50;
 	static boolean started = false;
+	// list of alive players
 	public static ArrayList<Player> alive = new ArrayList<Player>();
+	
+	public static void start() {
+		alive.clear();
+		started = true;
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			alive.add(p);
+			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 10);
+		}
+
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			GameScoreboard.updateScoreboard(p);
+		}
+		teleport();
+		tntDrop();
+	}
 	
 	public static void teleport() {
 		// teleports players to set locations
-		int i = 0;
 		for (Player p : Bukkit.getOnlinePlayers()) {
-			Location l = new Location(p.getWorld(), 10 + i * 5, 70, 10);
+			Location l = new Location(p.getWorld(), 10, 10, 10);
 			p.teleport(l);
-			i++;
 		}
-		
 	}
+	
 	public static void countdown() throws InterruptedException {
 		//5 second countdown until tnt
 		Bukkit.broadcastMessage(ChatColor.GREEN + "Starting in 5...");
@@ -47,9 +59,7 @@ public class Start {
 		Bukkit.broadcastMessage(ChatColor.GREEN + "1...");
 		TimeUnit.SECONDS.sleep(1);
 		Bukkit.broadcastMessage(ChatColor.GREEN + "Start!");
-		alive = (ArrayList<Player>) Bukkit.getOnlinePlayers();
-		started = true;
-		tntDrop();
+		start();
 	}
 	
 	public static void tntDrop() {
@@ -61,13 +71,28 @@ public class Start {
 					cancel();
 				
 				World world = Bukkit.getWorld("world");
-				int randomX = (int) Math.random() * (x2 - x1) + x1;
-				int randomZ = (int) Math.random() * (z2 - z1) + z1;
+				int randomX = (int) (Math.random() * (x2 - x1)) + x1;
+				int randomZ = (int) (Math.random() * (z2 - z1)) + z1;
 				
 				Location loc = new Location(world, randomX, y, randomZ);
-				FallingBlock tnt = (FallingBlock) world.spawnFallingBlock(loc, Material.TNT.createBlockData());
+				world.spawnEntity(loc, EntityType.PRIMED_TNT);
 			}
-		}.runTaskTimer(Main.instance, 0L, 50L);
+		}.runTaskTimer(Main.instance, 0L, 1L);
 	}
+	
+	public static void checkForWin() throws InterruptedException {
+    	if (alive.size() == 1) {
+	    	// Prints name of last player alive
+    		for (Player p : Bukkit.getOnlinePlayers()) {
+    			p.sendTitle(ChatColor.YELLOW + Start.alive.get(0).getName(), ChatColor.YELLOW + "won the game", 20, 50, 20);
+    			p.sendMessage(ChatColor.AQUA + Start.alive.get(0).getName() + " won the game!");
+    			p.setGameMode(GameMode.ADVENTURE);
+    			p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10, 1);
+    		}
+	    	Start.started = false;
+			TimeUnit.SECONDS.sleep(1);
+	    	Reset.returnTp();
+		}
+    }
 }
 
