@@ -11,7 +11,9 @@ public class Reset {
 		//returns players back to glass platform
 		World world = Bukkit.getWorld("world");
 		Location l = new Location(world,0,107,0);
-
+		
+		
+		//resets health when death occurs and teleports player as well
 		for(Player p : Bukkit.getOnlinePlayers()) {
 			p.setHealth(20);
 			p.teleport(l);
