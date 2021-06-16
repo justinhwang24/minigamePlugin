@@ -21,6 +21,7 @@ public class JoinEvents implements Listener {
 		p.setHealth(20);
 		p.setLevel(0);
 		
+		//spawns in glass cage and coordinates are given
 		World world = p.getWorld();
 		Location loc = new Location(world, 0, 107, 0);
 		Queue.glassCage(p);
@@ -30,6 +31,7 @@ public class JoinEvents implements Listener {
 			GameScoreboard.updateScoreboard(player);
 		}
 		
+		//sets gamemode for player as either spectator or actual player
 		if (Start.started && !Queue.list.contains(p))
 			p.setGameMode(GameMode.SPECTATOR);
 		else
