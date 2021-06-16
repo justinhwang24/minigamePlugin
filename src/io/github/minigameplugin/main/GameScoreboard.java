@@ -39,7 +39,7 @@ public class GameScoreboard {
 			s2.setScore(--i);
 		}
 		else {
-			Score s = o.getScore(ChatColor.translateAlternateColorCodes('&', ChatColor.AQUA + "&LWaiting"));
+			Score s = o.getScore(ChatColor.translateAlternateColorCodes('&', ChatColor.AQUA + "&LWaiting..."));
 			s.setScore(--i);
 			
 			for (Player player : Bukkit.getOnlinePlayers()) {
